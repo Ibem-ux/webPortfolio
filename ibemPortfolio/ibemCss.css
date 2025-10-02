@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration:none;
+    border:none;
+    outline:none;
+}
+html{
+    font-size:60%;
+}
+body{
+    width:100%;
+    height:100vh;
+    overflow-X:hidden;
+    background-color:black;
+    color:white;
+}
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:1rem 10%;
+    background:transparent;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+}
+.logo{
+    position:relative;
+    font-size:2.5rem;
+    color:#00811196;
+    font-weight:800;
+    cursor:pointer;
+    transition:0.5 ease;
+}
+.logo:hover{
+    transform:scale(1.1);
+}
+nav a{
+    position:relative;
+    font-size:2rem;
+    color:#fff;
+    margin-left:4rem;
+    font-weight:600;
+    transition:0.3s ease;
+    border-bottom:3px solid transparent
+}
+nav a:hover,
+a.active{
+    transform:scale(1.3);
+    color:#00811196;
+    border-bottom:3px solid #00811196; 
+}
+.home{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8rem;
+    background-color:black;
+    margin-top:2rem 10%;
+    padding-top:8rem;
+}
+.home .home-content h1{
+    font-size:6rem;
+    font-weight:700;
+    line-height:1.3;
+}
+span{
+    color:#00811196;
+}
+
+.home-content h3{
+    font-size:4rem;
+    margin-bottom:1rem;
+    font-weight:800;
+}
+.home-img{
+    border-radius:50%;
+}
+.home-img img{
+    position:relative;
+    width:75vh;
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.3s linear;
+}
+.home-img img:hover{
+    transform:scale(1.2);
+    font-size:1.5rem;
+    font-weight:700;
+}
+.btn a{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    width:4rem;
+    height:4rem;
+    background-color:transparent;
+    border:2px solid white;
+    border-radius:50%;
+    color:white;
+    font-size:1.5rem;
+    border-radius:50%;
+    margin:3rem 1.5rem 0 0;
+    transition:0.3s ease;
+}
+.btn a:hover{
+    background-color:#00811196;
+    border:2px solid #00811196;
+    transform:scale(1.3)translateY(-5px);
+    box-shadow:0 0 25px #00811196;
+}
+.home-content p{
+    font-size:1.5rem;
+    margin-top:2rem;
+    color:white;
+    line-height:1.5;
+    max-width:600px;
+    font-weight:400;
+}
+.home-content span{
+    position:relative;
+}
+.home-content .ojt-stud:before{
+    content:"OJT Student";
+    color:#00811196;
+    animation:words 10s linear infinite;
+}
+.home-content .ojt-stud:after{
+    content:"";
+    background-color:black;
+    position:absolute;
+    width:(calc(100% - 8px));
+    height:100%;
+    border-left:2px solid black;
+    right:-8;
+    animation:cursor 0.5s linear infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left:3px solid #00811196;
+    }
+}
+@keyframes words{
+    0%,20%{
+        content:"OJT Student";
+    }
+    25%,45%{
+        content:"4th Year Student";
+    }
+    50%,70%{
+        content:"Bagsak Student";
+    }
+    75%,95%{
+        content:"Freeloader";
+    }
+}
