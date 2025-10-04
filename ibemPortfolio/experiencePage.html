@@ -7,6 +7,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="ibemFavicon.png">
     <title>Experience</title>
+    <style>
+        .banner{
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .banner .slider{
+            position: absolute;
+            margin-top:5%;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;
+        }
+        @keyframes autoRun{
+            from{
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }to{
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+
+        .banner .slider .item{
+            position: absolute;
+            inset: 0 0 0 0;
+            transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(550px);
+        }
+        .banner .slider .item img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .banner .model{
+            background-image:url(myLogo_blackBG.png);
+            width: 100%;
+            height: 75vh;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-size: auto 130%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            z-index: 1;
+            margin-bottom:5%;
+            padding-bottom:5%;
+        }
+        .logo-center {
+            display: flex;
+            justify-content: center; 
+            align-items: center;   
+            height: 100vh;        
+        }
+
+        .logo-center img {
+            width: 300px;   /* adjust size */
+            height: auto;   /* keep proportions */
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -19,5 +86,17 @@
             <a href="aboutmePage.html">About Me</a>
         </nav>
     </header>
+    <div class="banner">
+        <div class="slider" style="--quantity: 6">
+            <div class="item" style="--position: 1"><img src="htmlLogo.png"></div>
+            <div class="item" style="--position: 2"><img src="cssLogo.png" alt=""></div>
+            <div class="item" style="--position: 3"><img src="javascriptLogo.png" alt=""></div>
+            <div class="item" style="--position: 4"><img src="phpLogo.png"></div>
+            <div class="item" style="--position: 5"><img src="clogo.png" alt=""></div>
+            <div class="item" style="--position: 6"><img src="javaLogo.png" alt=""></div>
+        </div>
+        <div class="model"></div>
+        </div>
+    </div>
 </body>
 </html>
