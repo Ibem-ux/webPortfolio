@@ -65,7 +65,7 @@ a.active{
     margin-top:2rem 10%;
     padding-top:8rem;
 }
-.home .home-content h1{
+h1{
     font-size:6rem;
     font-weight:700;
     line-height:1.3;
@@ -74,7 +74,7 @@ span{
     color:#24fa41b4;
 }
 
-.home-content h3{
+h3{
     font-size:4rem;
     margin-bottom:1rem;
     font-weight:800;
@@ -155,9 +155,27 @@ span{
         content:"4th Year Student";
     }
     50%,70%{
-        content:"Bagsak Student";
+        content:"Graduating Student";
     }
     75%,95%{
-        content:"Hatdog";
+        content:"Bagsak Student";
     }
+}
+
+.htmlHome{
+        position:absolute;
+        background-color:transparent;
+        margin:5%;
+        border-radius:50%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+         gap: 60px;
+}
+.htmlHomeIMG{
+        position:relative;  
+}
+.htmlHomeTEXT{
+        margin-left:10%;
+        margin-top:5%;
 }

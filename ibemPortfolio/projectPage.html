@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ibemCss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="ibemFavicon.png">
+    <title>Projects</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: white;
+    }
+    .project-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top:5%;
+        padding: 40px;
+        gap: 40px;
+        }
+
+    /* Left side: Existing projects */
+    .projects-list {
+        flex: 1;
+        background-color: #111;
+        border-radius: 10px;
+        padding: 20px;
+        min-height: 400px;
+    }
+    .projects-list h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    .post {
+        background-color: #1f1f1f;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .post h3 {
+        color: #ffcc00;
+        margin-bottom: 5px;
+    }
+
+    /* Right side: Add project area */
+    .add-project {
+        flex: 0.8;
+        background-color: #111;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #toggleFormBtn {
+        background-color: #24fa41b4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+
+    #toggleFormBtn:hover {
+        background-color: #1e7e34;
+    }
+
+    .form-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    input, textarea, button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    .form-container button {
+        background-color: #24fa41b4;
+        color: white;
+        cursor: pointer;
+    }
+
+    .form-container button:hover {
+        background-color: #1e7e34;
+    }
+    /* Floating Add Project form */
+    .form-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #111;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px #24fa41b4;
+        z-index: 1000;
+        width: 350px;
+        flex-direction: column;
+    }
+
+    .form-popup input, .form-popup textarea, .form-popup button {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .form-popup button{
+        background-color:#24fa41b4;
+    }
+    .form-popup button:hover{
+        background-color:#1e7e34;
+    }
+    
+    .form-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+    }
+
+
+    .post {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .post img {
+        width: 120px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .post-content {
+        flex: 1;
+}
+
+  </style>
+</head>
+<body>
+    <header>
+        <a href="mainPage.html" class="logo">Ibem</a>
+        <nav>
+            <a href="mainPage.html">Home</a>
+            <a href="experiencePage.html">Experience</a>
+            <a href="projectPage.html" class="active">Project</a>
+            <a href="aboutmePage.html">About Me</a>
+        </nav>
+    </header>
+
+  <main class="project-container">
+    <!-- Left side: Existing Projects -->
+    <section class="projects-list">
+      <h3><span>PROJECTs</span></h3>
+      <div id="postList"></div>
+    </section>
+
+    <!-- Right side: Add Project -->
+    <section class="add-project">
+    <button id="toggleFormBtn">Add Project</button>
+</section>
+
+<!-- Overlay and Floating Form -->
+<div class="form-overlay" id="formOverlay"></div>
+<div class="form-popup" id="formContainer">
+  <h2 style="text-align:center; margin-bottom:10px;"><span>Add Project</span></h2>
+  <input type="text" id="title" placeholder="Enter project title">
+  <textarea id="content" placeholder="Describe your project..."></textarea>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="addPost()">Save Project</button>
+</div>
+
+  </main>
+
+<script>
+  const toggleBtn = document.getElementById("toggleFormBtn");
+  const formContainer = document.getElementById("formContainer");
+  const postList = document.getElementById("postList");
+  const overlay = document.getElementById("formOverlay");
+
+  // Load saved projects
+  window.addEventListener("DOMContentLoaded", loadPosts);
+
+  // 🔹 Toggle popup form
+  toggleBtn.addEventListener("click", () => {
+    formContainer.style.display = "flex";
+    overlay.style.display = "block";
+  });
+
+  // 🔹 Hide popup when overlay clicked
+  overlay.addEventListener("click", () => {
+    formContainer.style.display = "none";
+    overlay.style.display = "none";
+  });
+
+  // 🔹 Add Post
+  function addPost() {
+    const title = document.getElementById("title").value.trim();
+    const content = document.getElementById("content").value.trim();
+    const imageInput = document.getElementById("imageInput");
+
+    if (!title || !content) {
+      alert("Please fill in all fields!");
+      return;
+    }
+
+    const newPost = { title, content, image: "" };
+
+    if (imageInput.files && imageInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        newPost.image = e.target.result;
+        savePost(newPost);
+      };
+      reader.readAsDataURL(imageInput.files[0]);
+    } else {
+      savePost(newPost);
+    }
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
+    imageInput.value = "";
+
+    formContainer.style.display = "none";
+    overlay.style.display = "none";
+  }
+
+  // 🔹 Save Post
+  function savePost(post) {
+    const posts = JSON.parse(localStorage.getItem("projects")) || [];
+    posts.push(post);
+    localStorage.setItem("projects", JSON.stringify(posts));
+    displayPost(post, posts.length - 1);
+  }
+
+  // 🔹 Load Posts
+  function loadPosts() {
+    const posts = JSON.parse(localStorage.getItem("projects")) || [];
+    posts.forEach((post, index) => displayPost(post, index));
+  }
+
+  // 🔹 Display Post
+  function displayPost(post, index) {
+    const postDiv = document.createElement("div");
+    postDiv.classList.add("post");
+
+    let imageHTML = "";
+    if (post.image) {
+      imageHTML = `<img src="${post.image}" alt="${post.title}">`;
+    }
+
+    const postContent = `
+      <div class="post-content">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <button onclick="deletePost(${index})" 
+          style="background-color:#c0392b; color:white; border:none;
+          padding:5px 10px; border-radius:5px; margin-top:10px; cursor:pointer;">
+          Delete
+        </button>
+      </div>
+    `;
+
+    postDiv.innerHTML = imageHTML + postContent;
+    postList.appendChild(postDiv);
+  }
+
+  // 🔹 Delete Post
+  function deletePost(index) {
+    const posts = JSON.parse(localStorage.getItem("projects")) || [];
+    posts.splice(index, 1);
+    localStorage.setItem("projects", JSON.stringify(posts));
+    postList.innerHTML = "";
+    loadPosts();
+  }
+</script>
+</body>
+</html>
