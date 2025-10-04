@@ -1,69 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ibemCss.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="ibemFavicon.png">
-    <title>About Me</title>
-    <style>
-            .profPic img {
-                width: 50vh;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 5px solid #24fa41b4;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                margin-bottom: 20px;
-            }
-            .home2{
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                gap:8rem;
-                background-color:black;
-                margin-top:2rem 10%;
-                padding-top:8rem;
-            }
-            .aboutmeHomeP1 h3{
-                font-size:4rem;
-                margin-bottom:1rem;
-                font-weight:800;
-            }
-            .aboutmeHomeP1 p{
-                font-size:2rem;
-                line-height:1.8;
-                text-align:justify;
-                margin-top:3rem;
-                margin-right:10%;
-                font-weight:400;
-            }
-           
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ibemCss.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="ibemFavicon.png">
+  <title>About Me</title>
+  <style>
+    .profPic img {
+      width: 50vh;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #24fa41b4;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .home2 {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 8rem;
+      background-color: black;
+      margin-top: 2rem 10%;
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      color: white;
+    }
+
+    .aboutmeHomeP1 h3 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .aboutmeHomeP1 p {
+      font-size: 2rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-top: 3rem;
+      margin-right: 10%;
+      font-weight: 400;
+    }
+
+    /* Buttons under picture */
+    .tabs-vertical {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      gap: 15px;
+      margin-top: 20px;
+      margin-left:20px;
+      padding-left:20px;
+    }
+
+    .tab-link {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-link:hover {
+      color: #00ff66;
+    }
+
+    .tab-link.active {
+      color: #00ff66;
+      border-bottom: 2px solid #00ff66;
+    }
+
+    /* Right side tab content */
+    .tab-content {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .tab-content h2 {
+      color: #00ff66;
+      margin-bottom: 10px;
+    }
     
+  </style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Ibem</a>
-        
-        <nav>
-            <a href="mainPage.html">Home</a>
-            <a href="#">Experience</a>
-            <a href="#">Education</a>
-            <a href="#">Contact</a>
-            <a href="aboutmePage.html" class="active">About Me</a>
-        </nav>
-    </header>
-    <section class="home2">
-    
-        <div class="profPic">
-            <img src="ibemPic.jpg">
-        </div>
-        <div class="aboutmeHomeP1">
-            <h3>Hi, I’m <span>Nhovem C. Cabahug</span>, a 4th-year CTU–Danao student passionate about tech and problem-solving.</h3>
-            <p>Welcome to my space! I’m a student driven by curiosity and a love for tackling challenges. At <span>Cebu Technological University – Danao Campus</span>, I’ve been exploring the world of technology, learning how ideas can be transformed into solutions that make an impact. This portfolio is a glimpse into my journey and the skills I continue to grow.</p>
-        </div>
-    </section>
-    
+  <header>
+    <a href="#" class="logo">Ibem</a>
+    <nav>
+      <a href="mainPage.html">Home</a>
+      <a href="experiencePage.html">Experience</a>
+      <a href="#">Project</a>
+      <a href="aboutmePage.html" class="active">About Me</a>
+    </nav>
+  </header>
+
+  <section class="home2">
+    <!-- Left column: picture + buttons -->
+    <div class="profPic">
+      <img src="ibemPic.jpg" alt="Profile picture">
+      <div class="tabs-vertical">
+        <span class="tab-link active" onclick="openTab(event, 'hobbies')">Hobbies</span>
+        <span class="tab-link" onclick="openTab(event, 'education')">Education</span>
+        <span class="tab-link" onclick="openTab(event, 'contact')">Contact Me</span>
+      </div>
+    </div>
+
+    <!-- Right column: About Me + tab contents -->
+    <div class="aboutmeHomeP1">
+      <h3>Hi, I’m <span>Nhovem C. Cabahug</span>, a 4th-year CTU–Danao student passionate about tech and problem-solving.</h3>
+      <p>Welcome to my space! I’m a student driven by curiosity and a love for tackling challenges. At <span>Cebu Technological University – Danao Campus</span>, I’ve been exploring the world of technology, learning how ideas can be transformed into solutions that make an impact. This portfolio is a glimpse into my journey and the skills I continue to grow.</p>
+      
+      <!-- Tab descriptions -->
+      <div id="hobbies" class="tab-content" style="display:block;">
+        <h3 class="titleHeader">My Hobbies</h3><Br>
+        <p>Outside of academics, I spend much of my free time on activities that help me relax and stay creative. I enjoy playing chess, which sharpens my critical thinking and strategy skills. I also play online games, listen to music, and immerse myself in reading manga and manhwas. These hobbies not only entertain me but also inspire fresh ideas that I bring into my projects and problem-solving.</p>
+      </div>
+
+      <div id="education" class="tab-content">
+        <h3 class="titleHeader">My Education</h3><Br>
+        <p>
+            I am currently a 4th-year student taking up the Bachelor of Industrial Technology, Major in Computer at <span style="color:#00ff66;">Cebu Technological University – Danao Campus</span>. My studies have given me a solid foundation in computer systems, programming, and technology applications. I continue to build a wide range of skills that allow me to adapt to different aspects of the tech field while preparing myself for future challenges in the industry.
+        </p>
+      </div>
+
+      <div id="contact" class="tab-content">
+        <h3 class="titleHeader">Contact Me</h3><Br>
+        <p>You can reach me via email at <span style="color:#00ff66;">ncabahug223@gmail.com</span><br>
+        or message me at <span style="color:#00ff66;">0994-313-0249</span>.</p>
+        <div class="btn">
+            <a href="https://www.facebook.com/cabahug.nhovem"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/hatdoguu5/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+            <a href="https://web.telegram.org/"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.tiktok.com/@hatdooooog222?_t=ZS-90Ctjh7M6OC&_r=1"><i class="fab fa-tiktok"></i></a>
+            </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function openTab(evt, tabName) {
+      let i, tabcontent, tablinks;
+
+      // Hide all tab contents
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Remove "active" class from all tabs
+      tablinks = document.getElementsByClassName("tab-link");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+
+      // Show selected tab
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
 </body>
 </html>
