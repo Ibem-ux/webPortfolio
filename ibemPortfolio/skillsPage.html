@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="ibemCss.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="ibemFavicon.png">
-    <title>Experience</title>
+    <title>Skills</title>
     <style>
         .banner{
             width: 100%;
@@ -26,6 +26,7 @@
             transform: perspective(1000px);
             animation: autoRun 20s linear infinite;
             z-index: 2;
+            background:transparent;
         }
         @keyframes autoRun{
             from{
@@ -45,8 +46,8 @@
         .banner .slider .item img{
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            
+            object-fit: contain;
+            background: transparent;
         }
         .banner .model{
             background-image:url(myLogo_blackBG.png);
@@ -74,12 +75,14 @@
             height: auto;   /* keep proportions */
         }
         .banner .item{
-            background:transparent;
-            width:75%;
-            height:75%;
-            margin:5%;
-            padding:5%;
+            background: transparent; /* already correct — keeps it see-through */
+            width: 75%;
+            height: 75%;
+            margin: 5%;
+            padding: 5%;
         }
+
+
 
     </style>
 </head>
@@ -88,20 +91,20 @@
         <a href="mainPage.html" class="logo">Ibem</a>
         
         <nav>
-            <a href="mainPage.html">Home</a>
-            <a href="experiencePage.html" class="active">Experience</a>
+            <a href="mainPage.html" class="active">Home</a>
+            <a href="skillsPage.html">Skills</a>
             <a href="projectPage.html">Project</a>
             <a href="aboutmePage.html">About Me</a>
         </nav>
     </header>
     <div class="banner">
         <div class="slider" style="--quantity: 6">
-            <div class="item" style="--position: 1"><a href="experienceHTML.html"><img src="htmlLogo.png"></a></div>
-            <div class="item" style="--position: 2"><a href="experienceCSS.html"><img src="cssLogo.png" alt=""></a></div>
-            <div class="item" style="--position: 3"><a href="experienceJS.html"><img src="javascriptLogo.png" alt=""></a></div>
-            <div class="item" style="--position: 4"><a href="experiencePHP.html"><img src="phpLogo.png"></a></div>
-            <div class="item" style="--position: 5"><a href="experienceC.html"><img src="clogo.png" alt=""></a></div>
-            <div class="item" style="--position: 6"><a href="experienceJAVA.html"><img src="javaLogo.png" alt=""></a></div>
+            <div class="item" style="--position: 1"><a target="_blank" href="skillsHTML.html"><img src="htmlLogo.png"></a></div>
+            <div class="item" style="--position: 2"><a target="_blank" href="skillsCSS.html"><img src="cssLogo.png" alt=""></a></div>
+            <div class="item" style="--position: 3"><a target="_blank" href="skillsJS.html"><img src="javascriptLogo.png" alt=""></a></div>
+            <div class="item" style="--position: 4"><a target="_blank" href="skillsPHP.html"><img src="phpLogo.png"></a></div>
+            <div class="item" style="--position: 5"><a target="_blank" href="skillsC.html"><img src="clogo.png" alt=""></a></div>
+            <div class="item" style="--position: 6"><a target="_blank" href="skillsJAVA.html"><img src="javaLogo.png" alt=""></a></div>
         </div>
         <div class="model"></div>
         </div>
