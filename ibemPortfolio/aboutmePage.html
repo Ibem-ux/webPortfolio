@@ -116,12 +116,12 @@
       
       <!-- Tab descriptions -->
       <div id="hobbies" class="tab-content" style="display:block;">
-        <h3 class="titleHeader">My Hobbies</h3><Br>
+        <h3 class="titleHeader">My Hobbies</h3>
         <p>Outside of academics, I spend much of my free time on activities that help me relax and stay creative. I enjoy playing chess, which sharpens my critical thinking and strategy skills. I also play online games, listen to music, and immerse myself in reading manga and manhwas. These hobbies not only entertain me but also inspire fresh ideas that I bring into my projects and problem-solving.</p>
       </div>
 
       <div id="education" class="tab-content">
-        <h3 class="titleHeader">My Education</h3><Br>
+        <h3 class="titleHeader">My Education</h3>
         <p>
             I am currently a 4th-year student taking up the Bachelor of Industrial Technology, Major in Computer at <span style="color:#00ff66;">Cebu Technological University – Danao Campus</span>. My studies have given me a solid foundation in computer systems, programming, and technology applications. I continue to build a wide range of skills that allow me to adapt to different aspects of the tech field while preparing myself for future challenges in the industry.
         </p>
@@ -142,26 +142,7 @@
     </div>
   </section>
 
-  <script>
-    function openTab(evt, tabName) {
-      let i, tabcontent, tablinks;
-
-      // Hide all tab contents
-      tabcontent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-
-      // Remove "active" class from all tabs
-      tablinks = document.getElementsByClassName("tab-link");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-      }
-
-      // Show selected tab
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.classList.add("active");
-    }
+  <script src="aboutmePageJS.js">
   </script>
 </body>
 </html>
